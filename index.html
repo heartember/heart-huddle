@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Heart Huddle – Subscribe</title>
+  <meta name="description" content="Subscribe to The Heart Huddle email list for Authentic Relating gatherings in Santa Cruz." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; }
+  </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900">
+  <header class="mx-auto max-w-3xl px-6 pt-12 pb-6 text-center">
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">The Heart Huddle</h1>
+    <p class="mt-3 text-base sm:text-lg text-neutral-600">Authentic Relating gatherings in Santa Cruz • Most Thursdays</p>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 pb-24">
+    <!-- Announcement / tagline -->
+    <section class="mb-8">
+      <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+        <p class="text-neutral-700">Join the email list to get weekly invites, timing, and signup links. You can unsubscribe anytime—one click.
+        </p>
+      </div>
+    </section>
+
+    <!-- Subscribe card -->
+    <section aria-labelledby="subscribe" class="mb-8">
+      <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+        <h2 id="subscribe" class="text-xl font-semibold">Subscribe</h2>
+        <p class="mt-2 text-neutral-600">Enter your details below to receive Heart Huddle emails.</p>
+
+        <!--
+          WIRING INSTRUCTIONS (choose one provider):
+          1) BUTTONDOWN: replace ACTION with
+             https://buttondown.email/api/emails/embed-subscribe/YOUR_USERNAME
+             Keep method="post" and include the inputs named "email" and "tag" (optional).
+             Buttondown will handle double opt-in + unsubscribe links automatically.
+
+          2) MAILCHIMP: replace ACTION with your form action URL from the embedded form code
+             (looks like https://YOUR_DC.list-manage.com/subscribe/post?u=XXXX&id=XXXX).
+             Keep input names exactly as MC provides (usually EMAIL and FNAME). Adjust below as needed.
+
+          3) CONVERTKIT / BEEHIIV / SUBSTACK: replace ACTION with the provider's embed endpoint and
+             adjust field names to match their docs.
+        -->
+        <form id="subscribe-form" class="mt-6 grid gap-4 sm:grid-cols-2" action="#" method="post" onsubmit="return handleLocalSubmit(event)">
+          <div class="sm:col-span-2">
+            <label for="name" class="block text-sm font-medium">Name (optional)</label>
+            <input id="name" name="name" type="text" autocomplete="name" class="mt-1 block w-full rounded-xl border border-neutral-300 bg-white px-3 py-2 shadow-sm focus:border-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-200" />
+          </div>
+          <div class="sm:col-span-2">
+            <label for="email" class="block text-sm font-medium">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" class="mt-1 block w-full rounded-xl border border-neutral-300 bg-white px-3 py-2 shadow-sm focus:border-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-200" />
+          </div>
+          <div class="sm:col-span-2 flex items-start gap-3">
+            <input id="consent" name="consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-neutral-300 text-neutral-900 focus:ring-neutral-600" />
+            <label for="consent" class="text-sm text-neutral-700">I agree to receive occasional emails about Heart Huddle events. Unsubscribe anytime.</label>
+          </div>
+          <div class="sm:col-span-2">
+            <button type="submit" class="w-full rounded-2xl bg-neutral-900 px-4 py-3 text-white font-medium shadow hover:shadow-md focus:outline-none">Subscribe</button>
+          </div>
+          <p id="subscribe-status" class="sm:col-span-2 text-sm text-neutral-600"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Unsubscribe card -->
+    <section aria-labelledby="unsubscribe" class="mb-8">
+      <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+        <h2 id="unsubscribe" class="text-xl font-semibold">Unsubscribe</h2>
+        <p class="mt-2 text-neutral-600">Stop receiving emails in one step.</p>
+        <!--
+          Unsubscribe is handled by your email provider in each email footer.
+          If you'd like a page-based option, wire one of the following:
+          • BUTTONDOWN: link to https://buttondown.email/YOUR_USERNAME/unsubscribe or use their hosted prefs link.
+          • MAILCHIMP: use the *|UNSUB|* merge tag in emails (auto-managed), or link to profile/manage pages.
+          • CONVERTKIT/others: use their hosted unsubscribe/manage profile URL.
+
+          The form below demonstrates a simple mailto fallback that opens a prefilled email.
+          Replace EMBER'S EMAIL with your preferred contact if using this fallback.
+        -->
+        <div class="mt-6 grid gap-4">
+          <a id="mailto-unsub" href="mailto:emberlich@gmail.com?subject=Unsubscribe%20me%20from%20Heart%20Huddle&body=Please%20remove%20this%20email%20address%20from%20your%20list." class="inline-flex w-full items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-sm font-medium shadow-sm hover:bg-neutral-50">Email to Unsubscribe</a>
+          <p class="text-xs text-neutral-500">Tip: Your email provider will also include an unsubscribe link in the footer of every message once you wire this page to a mailing list service.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact card -->
+    <section aria-labelledby="contact">
+      <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
+        <h2 id="contact" class="text-xl font-semibold">Questions?</h2>
+        <p class="mt-2 text-neutral-700">Reach Ember at <a href="mailto:emberlich@gmail.com" class="underline">emberlich@gmail.com</a>. You can also reply to any Heart Huddle email.</p>
+        <p class="mt-4 text-xs text-neutral-500">We respect your privacy. We’ll never share or sell your information.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto max-w-3xl px-6 pb-10 text-center text-xs text-neutral-500">
+    <p>© <span id="year"></span> The Heart Huddle • Santa Cruz, CA</p>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Local demo submit handler (so the page "works" before wiring to a provider)
+    function handleLocalSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const status = document.getElementById('subscribe-status');
+      if (!email) {
+        status.textContent = 'Please enter a valid email address.';
+        status.className = 'sm:col-span-2 text-sm text-red-600';
+        return false;
+      }
+      status.textContent = 'Thanks! This demo form is ready. Replace the form action with your email provider to go live.';
+      status.className = 'sm:col-span-2 text-sm text-emerald-600';
+      return false;
+    }
+  </script>
+</body>
+</html>
