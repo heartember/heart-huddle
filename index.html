@@ -23,8 +23,7 @@
     <!-- Announcement / tagline -->
     <section class="mb-8">
       <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
-        <p class="text-neutral-700">Join the email list to get weekly invites, timing, and signup links. You can un anytime—one click.
-        </p>
+        <p class="text-neutral-700">Join the email list to get weekly invites, timing, and signup links. You can unsubscribe anytime — one click.</p>
       </div>
     </section>
 
@@ -32,23 +31,9 @@
     <section aria-labelledby="subscribe" class="mb-8">
       <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
         <h2 id="subscribe" class="text-xl font-semibold">Subscribe</h2>
-        <p class="mt-2 text-neutral-600">Enter your details below to receive Heart Huddle emails.</p>
+        <p class="mt-2 text-neutral-600">Enter your email below to receive Heart Huddle updates.</p>
 
-        <!--
-          WIRING INSTRUCTIONS (choose one provider):
-          1) BUTTONDOWN: replace ACTION with
-             https://buttondown.email/api/emails/embed-subscribe/YOUR_USERNAME
-             Keep method="post" and include the inputs named "email" and "tag" (optional).
-             Buttondown will handle double opt-in + unsubscribe links automatically.
-
-          2) MAILCHIMP: replace ACTION with your form action URL from the embedded form code
-             (looks like https://YOUR_DC.list-manage.com/subscribe/post?u=XXXX&id=XXXX).
-             Keep input names exactly as MC provides (usually EMAIL and FNAME). Adjust below as needed.
-
-          3) CONVERTKIT / BEEHIIV / SUBSTACK: replace ACTION with the provider's embed endpoint and
-             adjust field names to match their docs.
-        -->
-        <!-- Subscribe form -->
+        <!-- Buttondown subscribe form (live) -->
         <form
           action="https://buttondown.email/api/emails/embed-subscribe/hearthuddle"
           method="post"
@@ -85,19 +70,9 @@
       <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 p-6">
         <h2 id="unsubscribe" class="text-xl font-semibold">Unsubscribe</h2>
         <p class="mt-2 text-neutral-600">Stop receiving emails in one step.</p>
-        <!--
-          Unsubscribe is handled by your email provider in each email footer.
-          If you'd like a page-based option, wire one of the following:
-          • BUTTONDOWN: link to https://buttondown.email/YOUR_USERNAME/unsubscribe or use their hosted prefs link.
-          • MAILCHIMP: use the *|UNSUB|* merge tag in emails (auto-managed), or link to profile/manage pages.
-          • CONVERTKIT/others: use their hosted unsubscribe/manage profile URL.
-
-          The form below demonstrates a simple mailto fallback that opens a prefilled email.
-          Replace EMBER'S EMAIL with your preferred contact if using this fallback.
-        -->
         <div class="mt-6 grid gap-4">
           <a id="mailto-unsub" href="mailto:emberlich@gmail.com?subject=Unsubscribe%20me%20from%20Heart%20Huddle&body=Please%20remove%20this%20email%20address%20from%20your%20list." class="inline-flex w-full items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 py-3 text-sm font-medium shadow-sm hover:bg-neutral-50">Email to Unsubscribe</a>
-          <p class="text-xs text-neutral-500">Tip: Your email provider will also include an unsubscribe link in the footer of every message once you wire this page to a mailing list service.</p>
+          <p class="text-xs text-neutral-500">Tip: Every newsletter from Buttondown also includes an unsubscribe link in the footer.</p>
         </div>
       </div>
     </section>
@@ -119,21 +94,6 @@
   <script>
     // Update year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Local demo submit handler (so the page "works" before wiring to a provider)
-    function handleLocalSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const status = document.getElementById('subscribe-status');
-      if (!email) {
-        status.textContent = 'Please enter a valid email address.';
-        status.className = 'sm:col-span-2 text-sm text-red-600';
-        return false;
-      }
-      status.textContent = 'Thanks! This demo form is ready. Replace the form action with your email provider to go live.';
-      status.className = 'sm:col-span-2 text-sm text-emerald-600';
-      return false;
-    }
   </script>
 </body>
 </html>
