@@ -9,15 +9,19 @@ A women's Authentic Relating circle in Santa Cruz. This repo hosts the public-fa
 ### `index.html` — Main hub
 The primary landing page at `hearthuddle.live`. Contains three sections:
 
-- **Get the invites** — Buttondown subscribe form for the weekly email list
 - **This week's gathering** — RSVP button, event details, and live attendee list (shown only when an event is active)
 - **Next gathering coming soon** — shown when no event is active
+- **Get the invites** — Buttondown subscribe form for the weekly email list
 
 ### `rsvp.html` — Quick RSVP link
 A simple page at `hearthuddle.live/rsvp` with a direct RSVP button. Useful for sharing in texts or group chats when someone asks how to sign up.
 
 ### `whos-coming.html` — Who's coming
-A focused page at `hearthuddle.live/whos-coming` showing only the attendee list for the current week. Linked from the confirmation email so attendees can see who else is joining.
+A focused page at `hearthuddle.live/whos-coming` showing the attendee list for the current week. Linked from the confirmation email so attendees can see who else is joining. Shows contextual CTAs:
+
+- **No RSVPs yet** — "be the first!" links to the RSVP form
+- **Spots available** — "Want to join them? RSVP" + cancellation link
+- **Full (9/9)** — "This week's circle is full" + cancellation link
 
 ### `style.css` — Shared styles
 Brand colors, typography, animations, and shared components used across all pages. Index-specific styles live in `index.html` directly.
@@ -39,14 +43,15 @@ Attendees use this to reserve their spot each week. Limited to 9 participants (p
 
 - Collects: Name, Email
 - On submission: triggers the Apps Script `checkGuestLimit()` function
-- Form closes automatically when capacity is reached
+- Form closes automatically when capacity is reached, with a custom closed message
 - URL: linked from the Buttondown invite email and from `hearthuddle.live/rsvp`
 
 ### Cancellation Form
 Attendees use this to cancel their reservation if they can't make it.
 
-- Linked from the confirmation email as a button
-- On submission: triggers `checkGuestLimit()`, which reopens the RSVP form if a cancellation brings the count below the limit
+- Linked from the confirmation email and from `hearthuddle.live/whos-coming`
+- Pre-fills the participant's name and email via URL parameters
+- On submission: triggers `checkGuestLimit()`, which reopens the RSVP form if the count drops below the limit
 
 ---
 
@@ -54,18 +59,27 @@ Attendees use this to cancel their reservation if they can't make it.
 
 The Google Apps Script lives in the Google Sheet connected to the RSVP form. It handles all backend logic.
 
+### Constants
+
+- `RESERVATION_LIMIT = 9` — max attendees (plus Ember = 10 total)
+- `FORM_ID` — the Google Form ID for the RSVP form
+- `NOTIFY_EMAIL` — Ember's email for notifications
+
 ### Functions
 
 #### `checkGuestLimit(e)` — triggered on form submission
 Runs automatically whenever someone submits the RSVP form or cancellation form.
 
-1. Notifies Ember of the new submission with current reservation count
-2. Sends a confirmation email to the participant with a link to the attendee list and a cancellation button
-3. Closes the RSVP form when the limit is reached, with a custom closed message
+1. Emails Ember with the new submission details and current reservation count
+2. Sends a confirmation email to the participant with:
+   - A link to the attendee list (`hearthuddle.live/whos-coming`)
+   - A pre-filled cancellation button
+3. Closes the RSVP form when the limit is reached
 4. Reopens the RSVP form if a cancellation brings the count back below the limit
+5. Emails Ember when the form opens or closes
 
 #### `resetReservations()` — runs automatically via time-driven trigger (Mondays)
-Clears all reservation rows from the sheet, reopens the RSVP form, and notifies Ember. Does **not** deactivate the hub page — that's separate.
+Clears all reservation rows from the sheet, reopens the RSVP form, and emails Ember. Does **not** deactivate the hub page — that's separate.
 
 #### `activateEvent()` — run manually on Wednesdays
 Sets `IS_ACTIVE = true` in Script Properties, causing the hub page to show the RSVP section and attendee list.
@@ -99,14 +113,6 @@ The invite email includes:
 - Event details (date, time, location)
 - RSVP link
 - Link to the attendee list (`hearthuddle.live/whos-coming`)
-
-A typical invite looks like:
-
-> Hi friends,
-> Thursday, March 6th is our next Heart Huddle — an evening of connection games, presence, and good company.
-> ...
-> Space is limited to 10. RSVP here.
-> Curious who's RSVP'd so far? See the guest list anytime.
 
 ---
 
