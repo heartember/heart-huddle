@@ -1,10 +1,294 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=https://buttondown.com/hearthuddle" />
-    <link rel="canonical" href="https://buttondown.com/hearthuddle" />
-  </head>
-  <body>
-    <p>If you’re not redirected, <a href="https://buttondown.com/hearthuddle">click here</a>.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Huddle</title>
+  <link rel="icon" href="hearthuddle-icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── index-specific styles ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      color: var(--flame);
+      font-style: italic;
+    }
+
+    .hero .tagline {
+      margin-top: 0.7rem;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── sections ── */
+    .sections {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 20px rgba(45,40,38,0.07), 0 1px 4px rgba(45,40,38,0.05);
+      overflow: hidden;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+    .section:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
+    .section:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
+
+    .section-header {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.9rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-header .label {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .section-body {
+      padding: 1.4rem;
+    }
+
+    /* ── subscribe form ── */
+    .subscribe-form {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .subscribe-form input[type="email"] {
+      flex: 1;
+      min-width: 0;
+      padding: 0.65rem 1rem;
+      border: 1.5px solid var(--rule);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .subscribe-form input[type="email"]:focus {
+      border-color: var(--flame);
+    }
+
+    .subscribe-form input[type="email"]::placeholder {
+      color: var(--ink-soft);
+      opacity: 0.6;
+    }
+
+    .subscribe-form button {
+      background: var(--flame);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.3rem;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .subscribe-form button:hover {
+      background: var(--ember);
+      transform: translateY(-1px);
+    }
+
+    .subscribe-note {
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      opacity: 0.7;
+    }
+
+    .subscribe-success {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      display: none;
+    }
+
+    /* ── event section ── */
+    .event-section { display: none; }
+    .event-section.visible { display: block; }
+
+    .coming-soon {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+
+    /* ── rsvp button ── */
+    .rsvp-btn {
+      display: block;
+      background: var(--flame);
+      color: #fff;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.8rem 1.4rem;
+      border-radius: 6px;
+      box-shadow: 0 3px 12px rgba(224,82,24,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-bottom: 0.5rem;
+    }
+
+    .rsvp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 16px rgba(224,82,24,0.32);
+    }
+
+    .event-meta {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="icon" src="hearthuddle-icon.png" alt="Heart Huddle" />
+    <h1>The <em>Heart Huddle</em></h1>
+    <p class="tagline">A women's circle of warmth and belonging · Santa Cruz</p>
+    <div class="divider"></div>
+  </header>
+
+  <div class="sections">
+
+    <!-- Subscribe -->
+    <div class="section">
+      <div class="section-header">
+        <span class="label">Get the invites</span>
+      </div>
+      <div class="section-body">
+        <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/hearthuddle" method="post" referrerpolicy="unsafe-url" onsubmit="handleSubscribe(event)">
+          <input type="email" name="email" id="bd-email" placeholder="your@email.com" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="subscribe-note">Thursday evening invites, sent when the circle is gathering.</p>
+        <p class="subscribe-success" id="subscribe-success">🧡 You're in — watch for the invite!</p>
+      </div>
+    </div>
+
+    <!-- This week's event (shown only when active) -->
+    <div class="section event-section" id="event-section">
+      <div class="section-header">
+        <span class="label">This week's gathering</span>
+        <span class="count-pill" id="count">—</span>
+      </div>
+      <div class="section-body">
+        <a class="rsvp-btn" id="rsvp-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfsYyY4cK0GgkIIjqhBVZyk45lFXc5uZw9KdlbQ23H1vHAo2g/viewform" target="_blank">
+          RSVP for this week →
+        </a>
+        <p class="event-meta">Arrive 6:15–6:45 · 260 High Street · wraps ~9:30</p>
+        <div class="names-list" id="names-list"></div>
+      </div>
+    </div>
+
+    <!-- Coming soon (shown when not active) -->
+    <div class="section" id="coming-soon-section" style="display:none;">
+      <div class="section-header">
+        <span class="label">Next gathering</span>
+      </div>
+      <div class="section-body">
+        <p class="coming-soon">No event this week — subscribe above to get the next invite. 🔥</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSDEIzFgXmGTF1IrDTs6ThgTF9SeDa4J27pNHBUVyBR2Jy_05IBdTL6E0LnMv_JLSIJg/exec';
+
+    async function loadEvent() {
+      try {
+        const res = await fetch(SCRIPT_URL);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+
+        const eventSection = document.getElementById('event-section');
+        const comingSoonSection = document.getElementById('coming-soon-section');
+        const countEl = document.getElementById('count');
+        const namesList = document.getElementById('names-list');
+
+        if (data.isActive) {
+          eventSection.classList.add('visible');
+          comingSoonSection.style.display = 'none';
+
+          const names = data.names || [];
+          countEl.textContent = `${names.length} / ${data.limit || 9}`;
+
+          if (names.length > 0) {
+            namesList.innerHTML = names.map(name => `
+              <div class="name-row">
+                <div class="flame-dot"></div>
+                <span class="name-text">${name}</span>
+              </div>
+            `).join('');
+          } else {
+            namesList.innerHTML = '<div class="state-msg">No RSVPs yet — be the first! 🔥</div>';
+          }
+        } else {
+          eventSection.classList.remove('visible');
+          comingSoonSection.style.display = 'block';
+        }
+
+      } catch (err) {
+        // silently fail — subscribe section still works
+        console.error('Event load error:', err);
+      }
+    }
+
+    function handleSubscribe(e) {
+      // Let the form submit normally to Buttondown, then show success message
+      setTimeout(() => {
+        document.querySelector('.subscribe-form').style.display = 'none';
+        document.getElementById('subscribe-success').style.display = 'block';
+      }, 800);
+    }
+
+    loadEvent();
+  </script>
+
+</body>
 </html>
