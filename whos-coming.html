@@ -29,6 +29,10 @@
     </div>
   </div>
 
+  <p class="note" id="rsvp-cta" style="display:none;">
+    Want to join them? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsYyY4cK0GgkIIjqhBVZyk45lFXc5uZw9KdlbQ23H1vHAo2g/viewform" target="_blank" style="color:var(--flame);text-decoration:underline;font-weight:500;">RSVP →</a>
+  </p>
+
   <p class="note">
     Space is limited to 10.<br>
     <a href="https://buttondown.com/hearthuddle">Subscribe to get the invite</a> and RSVP each week.<br>
@@ -55,6 +59,7 @@
         }
 
         countEl.textContent = `${names.length} / ${data.limit || 9}`;
+        document.getElementById('rsvp-cta').style.display = '';
 
         list.innerHTML = names.map(name => `
           <div class="name-row">
