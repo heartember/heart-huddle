@@ -33,6 +33,11 @@
     Want to join them? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsYyY4cK0GgkIIjqhBVZyk45lFXc5uZw9KdlbQ23H1vHAo2g/viewform" target="_blank" style="color:var(--flame);text-decoration:underline;font-weight:500;">RSVP →</a>
   </p>
 
+  <p class="note" id="full-cta" style="display:none;">
+    This week's circle is full — join us next time!<br>
+    Already RSVP'd but can't make it? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfymhWlYvhVqQDC9Om0dMBUjEDgUGmPo1aRH0mudnbXhaZ0jw/viewform" target="_blank" style="color:var(--flame);text-decoration:underline;font-weight:500;">Cancel your spot →</a>
+  </p>
+
   <p class="note">
     Space is limited to 10.<br>
     <a href="https://buttondown.com/hearthuddle">Subscribe to get the invite</a> and RSVP each week.<br>
@@ -58,8 +63,14 @@
           return;
         }
 
-        countEl.textContent = `${names.length} / ${data.limit || 9}`;
-        document.getElementById('rsvp-cta').style.display = '';
+        const limit = data.limit || 9;
+        countEl.textContent = `${names.length} / ${limit}`;
+
+        if (names.length >= limit) {
+          document.getElementById('full-cta').style.display = '';
+        } else {
+          document.getElementById('rsvp-cta').style.display = '';
+        }
 
         list.innerHTML = names.map(name => `
           <div class="name-row">
