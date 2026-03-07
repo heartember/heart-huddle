@@ -3,75 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Who's Coming · Heart Huddle</title>
+  <title>Join Us · Heart Huddle</title>
   <link rel="icon" href="hearthuddle-icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="join-body">
 
-  <header class="header">
-    <img class="icon" src="hearthuddle-icon.png" alt="Heart Huddle flame icon" />
-    <h1>Who's <span>coming</span></h1>
-    <p class="sub">Heart Huddle · Thursday evenings · Santa Cruz</p>
-    <div class="divider"></div>
-  </header>
+  <img class="icon" src="hearthuddle-icon.png" alt="Heart Huddle" />
 
-  <div class="card">
-    <div class="card-header">
-      <span class="label">This week's circle</span>
-      <span class="count-pill" id="count">loading…</span>
-    </div>
-    <div class="names-list" id="names-list">
-      <div class="state-msg">Gathering the circle…</div>
-    </div>
-  </div>
+  <h1>Come to the<br><em>Heart Huddle</em></h1>
 
-  <p class="note">
-    Space is limited to 10.<br>
-    <a href="https://buttondown.com/hearthuddle">Subscribe to get the invite</a> and RSVP each week.<br>
-    Last-minute spots welcome — the list updates in real time.
+  <div class="divider"></div>
+
+  <p class="description">
+    A women's circle of warmth and belonging.<br>
+    Thursday evenings in Santa Cruz —<br>
+    connection games, presence, and good company.
   </p>
 
-  <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSDEIzFgXmGTF1IrDTs6ThgTF9SeDa4J27pNHBUVyBR2Jy_05IBdTL6E0LnMv_JLSIJg/exec';
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfsYyY4cK0GgkIIjqhBVZyk45lFXc5uZw9KdlbQ23H1vHAo2g/viewform" target="_blank">
+    RSVP for this week →
+  </a>
 
-    async function loadNames() {
-      const list = document.getElementById('names-list');
-      const countEl = document.getElementById('count');
-
-      try {
-        const res = await fetch(SCRIPT_URL);
-        if (!res.ok) throw new Error('Network response was not ok');
-        const data = await res.json();
-        const names = data.names || [];
-
-        if (names.length === 0) {
-          list.innerHTML = '<div class="state-msg">No RSVPs yet — be the first! 🔥</div>';
-          countEl.textContent = `0 / ${data.limit || 9}`;
-          return;
-        }
-
-        countEl.textContent = `${names.length} / ${data.limit || 9}`;
-
-        list.innerHTML = names.map(name => `
-          <div class="name-row">
-            <div class="flame-dot"></div>
-            <span class="name-text">${name}</span>
-          </div>
-        `).join('');
-
-      } catch (err) {
-        list.innerHTML = '<div class="state-msg">Couldn\'t load the list right now — check back soon.</div>';
-        countEl.textContent = '—';
-        console.error('RSVP fetch error:', err);
-      }
-    }
-
-    loadNames();
-  </script>
+  <div class="footer-links">
+    <a href="https://hearthuddle.live/whos-coming">See who's coming</a>
+    <a href="https://hearthuddle.live">Subscribe to invites</a>
+  </div>
 
 </body>
 </html>

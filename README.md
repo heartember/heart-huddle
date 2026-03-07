@@ -13,11 +13,11 @@ The primary landing page at `hearthuddle.live`. Contains three sections:
 - **This week's gathering** — RSVP button, event details, and live attendee list (shown only when an event is active)
 - **Next gathering coming soon** — shown when no event is active
 
-### `rsvp.html` — Who's coming
-A focused page at `hearthuddle.live/rsvp` showing only the attendee list for the current week. Linked from the confirmation email so attendees can see who else is joining.
+### `rsvp.html` — Quick RSVP link
+A simple page at `hearthuddle.live/rsvp` with a direct RSVP button. Useful for sharing in texts or group chats when someone asks how to sign up.
 
-### `join.html` — Quick RSVP link
-A simple page at `hearthuddle.live/join` with a direct RSVP button. Useful for sharing in texts or group chats when someone asks how to sign up.
+### `whos-coming.html` — Who's coming
+A focused page at `hearthuddle.live/whos-coming` showing only the attendee list for the current week. Linked from the confirmation email so attendees can see who else is joining.
 
 ### `style.css` — Shared styles
 Brand colors, typography, animations, and shared components used across all pages. Index-specific styles live in `index.html` directly.
@@ -40,7 +40,7 @@ Attendees use this to reserve their spot each week. Limited to 9 participants (p
 - Collects: Name, Email
 - On submission: triggers the Apps Script `checkGuestLimit()` function
 - Form closes automatically when capacity is reached
-- URL: linked from the Buttondown invite email and from `hearthuddle.live/join`
+- URL: linked from the Buttondown invite email and from `hearthuddle.live/rsvp`
 
 ### Cancellation Form
 Attendees use this to cancel their reservation if they can't make it.
@@ -98,7 +98,7 @@ Weekly invites are sent via [Buttondown](https://buttondown.com/hearthuddle). Su
 The invite email includes:
 - Event details (date, time, location)
 - RSVP link
-- Link to the attendee list (`hearthuddle.live/rsvp`)
+- Link to the attendee list (`hearthuddle.live/whos-coming`)
 
 A typical invite looks like:
 
