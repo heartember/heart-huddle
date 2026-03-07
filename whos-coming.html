@@ -49,7 +49,7 @@
         const names = data.names || [];
 
         if (names.length === 0) {
-          list.innerHTML = '<div class="state-msg">No RSVPs yet — be the first! 🔥</div>';
+          list.innerHTML = '<div class="state-msg">No RSVPs yet — <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsYyY4cK0GgkIIjqhBVZyk45lFXc5uZw9KdlbQ23H1vHAo2g/viewform" target="_blank" style="color:var(--flame);text-decoration:underline;">be the first!</a> 🔥</div>';
           countEl.textContent = `0 / ${data.limit || 9}`;
           return;
         }
