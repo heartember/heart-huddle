@@ -42,7 +42,7 @@
   <p class="note">
     Space is limited to 10.<br>
     <a href="https://buttondown.com/hearthuddle">Subscribe to get the invite</a> and RSVP each week.<br>
-    Last-minute spots welcome — the list updates in real time.
+    <span id="last-minute" style="display:none;">Last-minute RSVPs welcome — the list updates in real time.</span>
   </p>
 
   <script>
@@ -71,6 +71,7 @@
           document.getElementById('full-cta').style.display = '';
         } else {
           document.getElementById('rsvp-cta').style.display = '';
+          document.getElementById('last-minute').style.display = '';
         }
 
         list.innerHTML = names.map(name => `
