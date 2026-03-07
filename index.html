@@ -210,21 +210,6 @@
 
   <div class="sections">
 
-    <!-- Subscribe -->
-    <div class="section">
-      <div class="section-header">
-        <span class="label">Get the invites</span>
-      </div>
-      <div class="section-body">
-        <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/hearthuddle" method="post" referrerpolicy="unsafe-url" onsubmit="handleSubscribe(event)">
-          <input type="email" name="email" id="bd-email" placeholder="your@email.com" required />
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="subscribe-note">Thursday evening invites, sent when the circle is gathering.</p>
-        <p class="subscribe-success" id="subscribe-success">🧡 You're in — watch for the invite!</p>
-      </div>
-    </div>
-
     <!-- This week's event (shown only when active) -->
     <div class="section event-section" id="event-section">
       <div class="section-header">
@@ -240,13 +225,28 @@
       </div>
     </div>
 
+    <!-- Subscribe -->
+    <div class="section">
+      <div class="section-header">
+        <span class="label">Get the invites</span>
+      </div>
+      <div class="section-body">
+        <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/hearthuddle" method="post" referrerpolicy="unsafe-url" onsubmit="handleSubscribe(event)">
+          <input type="email" name="email" id="bd-email" placeholder="your@email.com" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="subscribe-note">Thursday evening invites, sent when the circle is gathering.</p>
+        <p class="subscribe-success" id="subscribe-success">🧡 You're in — watch for the invite!</p>
+      </div>
+    </div>
+
     <!-- Coming soon (shown when not active) -->
     <div class="section" id="coming-soon-section" style="display:none;">
       <div class="section-header">
         <span class="label">Next gathering</span>
       </div>
       <div class="section-body">
-        <p class="coming-soon">Next gathering coming soon — subscribe above to get the invite. 🔥</p>
+        <p class="coming-soon">Next gathering coming soon — subscribe below to get the invite. 🔥</p>
       </div>
     </div>
 
