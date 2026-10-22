@@ -103,7 +103,7 @@ img.icon {
   opacity: 0.85;
 }
 
-.card-header .count-pill {
+.count-pill {
   background: var(--flame);
   color: #fff;
   font-size: 0.78rem;

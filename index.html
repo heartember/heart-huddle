@@ -198,6 +198,17 @@
       text-align: center;
       margin-top: 0.5rem;
     }
+
+    .section-body .names-list { padding-bottom: 0; }
+    .section-body .names-list:empty { display: none; }
+
+    .cancel-link { margin-top: 0.9rem; }
+
+    .cancel-link a {
+      color: var(--flame);
+      text-decoration: underline;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -225,8 +236,11 @@
         <a class="rsvp-btn" id="rsvp-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfsYyY4cK0GgkIIjqhBVZyk45lFXc5uZw9KdlbQ23H1vHAo2g/viewform" target="_blank">
           RSVP for this week →
         </a>
-        <p class="event-meta">Arrive 6:15–6:45 · 260 High Street · wraps ~9:30</p>
+        <p class="event-meta">Arrive 6:15–6:45 · 260 High Street · wraps&nbsp;~9pm</p>
         <div class="names-list" id="names-list"></div>
+        <p class="event-meta cancel-link" id="cancel-link" style="display:none;">
+          Can't make it? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfymhWlYvhVqQDC9Om0dMBUjEDgUGmPo1aRH0mudnbXhaZ0jw/viewform" target="_blank">Cancel your spot</a>
+        </p>
       </div>
     </div>
 
@@ -289,6 +303,7 @@
                 <span class="name-text">${name}</span>
               </div>
             `).join('');
+            document.getElementById('cancel-link').style.display = '';
           } else {
             namesList.innerHTML = '<div class="state-msg">No RSVPs yet — be the first! 🔥</div>';
           }
