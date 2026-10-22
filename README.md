@@ -11,7 +11,7 @@ The primary landing page at `hearthuddle.live`. Contains three sections:
 
 - **This week's gathering** — RSVP button, event details, and live attendee list (shown only when an event is active)
 - **Next gathering coming soon** — shown when no event is active
-- **Get the invites** — Buttondown subscribe form for the weekly email list
+- **Get the invites** — Buttondown subscribe form for the weekly email list (currently commented out while the group is closed)
 
 ### `rsvp.html` — Quick RSVP link
 A simple page at `hearthuddle.live/rsvp` with a direct RSVP button. Useful for sharing in texts or group chats when someone asks how to sign up.
