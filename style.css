@@ -173,6 +173,18 @@ img.icon {
 
 .note a:hover { text-decoration: underline; }
 
+/* ── cancel button (whos-coming) ── */
+.cancel-cta {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+.cancel-hint {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
 /* ── join page ── */
 .join-body {
   justify-content: center;

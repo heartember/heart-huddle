@@ -20,8 +20,9 @@ A simple page at `hearthuddle.live/rsvp` with a direct RSVP button. Useful for s
 A focused page at `hearthuddle.live/whos-coming` showing the attendee list for the current week. Linked from the confirmation email so attendees can see who else is joining. Shows contextual CTAs:
 
 - **No RSVPs yet** — "be the first!" links to the RSVP form
-- **Spots available** — "Want to join them? RSVP" + cancellation link
-- **Full (9/9)** — "This week's circle is full" + cancellation link
+- **Spots available** — "Want to join them? RSVP"
+- **Full (9/9)** — "This week's circle is full"
+- **Any RSVPs** — "Can't make it? Cancel your spot" button below the list
 
 ### `style.css` — Shared styles
 Brand colors, typography, animations, and shared components used across all pages. Index-specific styles live in `index.html` directly.
