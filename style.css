@@ -3,9 +3,12 @@
 :root {
   --cream: #f5f0e8;
   --cream-dark: #ede7d9;
-  --flame: #e05218;
-  --flame-soft: #d4621a;
-  --ember: #b84a10;
+  --flame: #DD8238;
+  --flame-soft: #E39556;
+  --ember: #A8561A;   /* darker flame: readable text links + button hover */
+  --link: #A8561A;
+  --btn: #C96F2A;     /* deeper flame for button backgrounds (white text) */
+  --brown: #6E3F1E;
   --ink: #2d2826;
   --ink-soft: #5a4f47;
   --rule: rgba(45,40,38,0.12);
@@ -27,13 +30,32 @@ body {
   padding: 3rem 1.5rem 5rem;
 }
 
-/* ── icon ── */
-img.icon {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 2px 6px rgba(224,82,24,0.25));
+/* ── brand lockup (flame + "Heart Huddle") ── */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-bottom: 1.1rem;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--brown);
+}
+
+.brand img {
+  width: auto;
+  height: 2.1rem;
+  display: block;
+}
+
+/* ── standalone flame (index + rsvp) ── */
+.hero-flame {
+  display: block;
+  height: 64px;
+  width: auto;
+  margin: 0 auto 1rem;
 }
 
 /* ── header ── */
@@ -44,9 +66,9 @@ img.icon {
 }
 
 .header h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lora', serif;
   font-size: clamp(1.9rem, 5vw, 2.8rem);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.1;
   color: var(--ink);
@@ -54,7 +76,7 @@ img.icon {
 
 .header h1 span, h1 em {
   color: var(--flame);
-  font-style: italic;
+  font-style: normal;
 }
 
 .header .sub {
@@ -73,7 +95,7 @@ img.icon {
   background: var(--flame);
   border-radius: 2px;
   margin: 1rem auto 0;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 /* ── card ── */
@@ -88,7 +110,7 @@ img.icon {
 }
 
 .card-header {
-  background: var(--ink);
+  background: var(--brown);
   color: var(--cream);
   padding: 1.1rem 1.6rem;
   display: flex;
@@ -97,10 +119,10 @@ img.icon {
 }
 
 .card-header .label {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-family: 'Lora', serif;
+  font-weight: 500;
   font-size: 1rem;
-  opacity: 0.85;
+  opacity: 0.92;
 }
 
 .count-pill {
@@ -151,8 +173,9 @@ img.icon {
   text-align: center;
   color: var(--ink-soft);
   font-size: 0.95rem;
-  font-style: italic;
 }
+
+.state-msg a { color: var(--link); }
 
 /* ── note / footer ── */
 .note {
@@ -166,7 +189,7 @@ img.icon {
 }
 
 .note a {
-  color: var(--flame);
+  color: var(--link);
   text-decoration: none;
   font-weight: 500;
 }
@@ -192,13 +215,27 @@ img.icon {
 }
 
 .join-body h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lora', serif;
   font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.01em;
+  color: var(--brown);
   animation: fadeUp 0.6s 0.1s ease both;
   opacity: 0;
+}
+
+.join-body h1 em {
+  color: var(--flame);
+  font-style: normal;
+}
+
+.join-body .hero-flame {
+  animation: fadeUp 0.6s ease both;
+}
+
+.join-body .divider {
+  margin-bottom: 2.5rem;  /* matches the gap under the index hero */
 }
 
 .description {
@@ -213,7 +250,7 @@ img.icon {
 
 .btn {
   display: inline-block;
-  background: var(--flame);
+  background: var(--btn);
   color: #fff;
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
@@ -222,7 +259,7 @@ img.icon {
   text-decoration: none;
   padding: 0.85rem 2.2rem;
   border-radius: 6px;
-  box-shadow: 0 4px 16px rgba(224,82,24,0.28);
+  box-shadow: 0 4px 16px rgba(221,130,56,0.32);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   animation: fadeUp 0.6s 0.35s ease both;
   opacity: 0;
@@ -230,7 +267,7 @@ img.icon {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(224,82,24,0.36);
+  box-shadow: 0 6px 20px rgba(221,130,56,0.42);
 }
 
 .footer-links {
@@ -250,7 +287,7 @@ img.icon {
   transition: color 0.15s;
 }
 
-.footer-links a:hover { color: var(--flame); }
+.footer-links a:hover { color: var(--link); }
 
 /* ── animations ── */
 @keyframes fadeUp {
