@@ -81,7 +81,7 @@ body {
 
 .header .sub {
   margin-top: 0.6rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--ink-soft);
   letter-spacing: 0.04em;
@@ -128,7 +128,7 @@ body {
 .count-pill {
   background: var(--flame);
   color: #fff;
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   padding: 0.25rem 0.75rem;
@@ -172,7 +172,7 @@ body {
   padding: 2.5rem 1.6rem;
   text-align: center;
   color: var(--ink-soft);
-  font-size: 0.95rem;
+  font-size: 1.125rem;
 }
 
 .state-msg a { color: var(--link); }
@@ -182,19 +182,39 @@ body {
   margin-top: 2rem;
   max-width: 420px;
   text-align: center;
-  font-size: 0.82rem;
-  color: var(--ink-soft);
+  font-size: 1.125rem;
+  color: var(--ink);
+  font-weight: 400;
   line-height: 1.6;
   animation: fadeUp 0.7s 0.3s ease both;
 }
 
 .note a {
   color: var(--link);
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: 500;
 }
 
-.note a:hover { text-decoration: underline; }
+/* bigger tap areas (44px+) for small text links */
+.note a,
+.footer-links a,
+.state-msg a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.55rem 0.3rem;
+  text-underline-offset: 3px;
+}
+
+/* ── address → Google Maps link ── */
+.map-link {
+  color: var(--link);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.55rem 0.1rem;
+}
 
 /* ── cancel button (whos-coming) ── */
 .cancel-cta {
@@ -204,8 +224,9 @@ body {
 
 .cancel-hint {
   margin-top: 0.75rem;
-  font-size: 0.82rem;
-  color: var(--ink-soft);
+  font-size: 1.125rem;
+  color: var(--ink);
+  font-weight: 400;
 }
 
 /* ── join page ── */
@@ -271,18 +292,17 @@ body {
 }
 
 .footer-links {
-  margin-top: 2.5rem;
-  font-size: 0.82rem;
-  color: var(--ink-soft);
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: var(--ink);
   animation: fadeUp 0.6s 0.45s ease both;
   opacity: 0;
 }
 
 .footer-links a {
-  color: var(--ink-soft);
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 1px;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: underline;
   margin: 0 0.6rem;
   transition: color 0.15s;
 }

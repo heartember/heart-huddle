@@ -40,7 +40,7 @@
 
     .hero .tagline {
       margin-top: 0.7rem;
-      font-size: 0.95rem;
+      font-size: 1.0625rem;
       color: var(--ink-soft);
       letter-spacing: 0.03em;
     }
@@ -48,7 +48,7 @@
     .about {
       max-width: 420px;
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 1.0625rem;
       line-height: 1.75;
       color: var(--ink-soft);
       margin-bottom: 2rem;
@@ -89,7 +89,7 @@
     .section-header .label {
       font-family: 'Lora', serif;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 1rem;
       opacity: 0.92;
     }
 
@@ -111,7 +111,7 @@
       border: 1.5px solid var(--rule);
       border-radius: 6px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 300;
       color: var(--ink);
       background: var(--cream);
@@ -135,7 +135,7 @@
       padding: 0.65rem 1.3rem;
       border-radius: 6px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.92rem;
+      font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
       transition: background 0.15s, transform 0.1s;
@@ -149,13 +149,12 @@
 
     .subscribe-note {
       margin-top: 0.6rem;
-      font-size: 0.78rem;
+      font-size: 1rem;
       color: var(--ink-soft);
-      opacity: 0.7;
     }
 
     .subscribe-success {
-      font-size: 0.95rem;
+      font-size: 1.125rem;
       color: var(--ink-soft);
       display: none;
     }
@@ -165,8 +164,8 @@
     .event-section.visible { display: block; }
 
     .coming-soon {
-      font-size: 0.9rem;
-      color: var(--ink-soft);
+      font-size: 1.125rem;
+      color: var(--ink);
       text-align: center;
       padding: 0.5rem 0;
     }
@@ -194,8 +193,8 @@
     }
 
     .event-meta {
-      font-size: 0.82rem;
-      color: var(--ink-soft);
+      font-size: 1.125rem;
+      color: var(--ink);
       text-align: center;
       margin-top: 0.5rem;
     }
@@ -208,7 +207,11 @@
     .cancel-link a {
       color: var(--link);
       text-decoration: underline;
+      text-underline-offset: 3px;
       font-weight: 500;
+      display: inline-block;
+      min-height: 44px;
+      padding: 0.55rem 0.3rem;
     }
   </style>
 </head>
@@ -237,7 +240,7 @@
         <a class="rsvp-btn" id="rsvp-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfsYyY4cK0GgkIIjqhBVZyk45lFXc5uZw9KdlbQ23H1vHAo2g/viewform" target="_blank">
           RSVP for this week →
         </a>
-        <p class="event-meta">Arrive 6:15–6:45 · 260 High Street · wraps&nbsp;~9pm</p>
+        <p class="event-meta">Arrive 6:15–6:45 · <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=260+High+St,+Santa+Cruz,+CA" target="_blank" rel="noopener">260 High Street</a> · wraps&nbsp;~9pm</p>
         <div class="names-list" id="names-list"></div>
         <p class="event-meta cancel-link" id="cancel-link" style="display:none;">
           Can't make it? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfymhWlYvhVqQDC9Om0dMBUjEDgUGmPo1aRH0mudnbXhaZ0jw/viewform" target="_blank">Cancel your spot</a>
